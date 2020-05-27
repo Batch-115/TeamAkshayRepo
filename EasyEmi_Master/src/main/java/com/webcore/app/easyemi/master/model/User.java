@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 	private String firstName;
 	private String middleName;
@@ -26,9 +26,10 @@ public class User {
 	private String role;
 	private String userBranch;
 	private int userStatusCode;
-	private String userDocument;
 	@OneToOne(cascade = CascadeType.ALL)
 	private UserAddress userAddress;
+	@OneToOne(cascade = CascadeType.ALL)
+	private UserDocument userDocument;
 	
 	public int getUserId() {
 		return userId;
@@ -120,16 +121,16 @@ public class User {
 	public void setUserStatusCode(int userStatusCode) {
 		this.userStatusCode = userStatusCode;
 	}
-	public String getUserDocument() {
-		return userDocument;
-	}
-	public void setUserDocument(String userDocument) {
-		this.userDocument = userDocument;
-	}
 	public UserAddress getUserAddress() {
 		return userAddress;
 	}
 	public void setUserAddress(UserAddress userAddress) {
 		this.userAddress = userAddress;
+	}
+	public UserDocument getUserDocument() {
+		return userDocument;
+	}
+	public void setUserDocument(UserDocument userDocument) {
+		this.userDocument = userDocument;
 	}
 }

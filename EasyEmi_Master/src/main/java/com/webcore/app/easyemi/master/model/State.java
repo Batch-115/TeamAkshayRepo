@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class State {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int stateId;
 	private String stateName;
 	private int statusCode;
