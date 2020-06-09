@@ -10,7 +10,7 @@ import javax.persistence.Lob;
 @Entity
 public class UserDocument {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int docId;
 	@Column(length = 16777215)
 	private String adharCard;
@@ -18,6 +18,15 @@ public class UserDocument {
 	private String panCard;
 	@Column(length = 16777215)
 	private String userPhoto;
+	@Column(length = 16777215)
+	private String passbook;
+	
+	public String getPassbook() {
+		return passbook;
+	}
+	public void setPassbook(String passbook) {
+		this.passbook = passbook;
+	}
 	public int getDocId() {
 		return docId;
 	}

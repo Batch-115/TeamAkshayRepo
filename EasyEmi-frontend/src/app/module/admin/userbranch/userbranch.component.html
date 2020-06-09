@@ -1,0 +1,24 @@
+<div class="container">
+    <h4 style="align-self : center;">Select Branch</h4>
+  <table class="table table-striped">
+      <thead>
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+      <tbody>
+          <tr *ngFor='let branch of branchesDto'>
+            <td>
+              <input type="radio" name="branchGroup" (click)=onUserBranchSubmit(branch.branchId) />
+           </td>
+              <td>{{branch.branchId}}</td>
+              <td>{{branch.branchName}}</td>
+              <td> {{branch.branchMailId}} </td>
+              <td> {{branch.branchType}} </td>
+              <td> {{branch.addressId}} </td>
+              <td> {{branch.city}} </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<!-- <button type="button" (click)="onUserBranchSubmit()">Submit</button> -->

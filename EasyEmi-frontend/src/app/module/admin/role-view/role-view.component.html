@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="center">
+      <button type="button" (click)="addRole()" style="margin-left : 64px">Add Role</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr class="table-warning">
+        <th>Role Name</th>
+        <th>Role Code</th>
+        <th>Role Status Code</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let role of role'>
+        <td>{{role.roleName}}</td>
+        <td>{{role.roleCode}}</td>
+        <td> {{role.roleStatusCode}} </td>
+         <td><a class="btn">
+            <i class="fa fa-trash" (click)="delete(role)"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>

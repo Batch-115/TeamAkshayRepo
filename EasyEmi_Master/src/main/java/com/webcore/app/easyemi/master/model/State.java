@@ -7,18 +7,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 
 @Entity
 public class State {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int stateId;
 	private String stateName;
-	private int statusCode;
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<District> districtList;
-	
+	private int stateCode;
+	private int stateStatusCode;
+	@ManyToOne(cascade = {
+			CascadeType.MERGE,CascadeType.ALL
+	})
+	private Country country;
 	public int getStateId() {
 		return stateId;
 	}
@@ -31,16 +35,23 @@ public class State {
 	public void setStateName(String stateName) {
 		this.stateName = stateName;
 	}
-	public int getStatusCode() {
-		return statusCode;
+	public int getStateCode() {
+		return stateCode;
 	}
-	public void setStatusCode(int statusCode) {
-		this.statusCode = statusCode;
+	public void setStateCode(int stateCode) {
+		this.stateCode = stateCode;
 	}
-	public List<District> getDistrictList() {
-		return districtList;
+	public int getStateStatusCode() {
+		return stateStatusCode;
 	}
-	public void setDistrictList(List<District> districtList) {
-		this.districtList = districtList;
+	public void setStateStatusCode(int stateStatusCode) {
+		this.stateStatusCode = stateStatusCode;
 	}
+	public Country getCountry() {
+		return country;
+	}
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+	
 }

@@ -1,0 +1,83 @@
+<div class="container">
+    <form [formGroup]="this.adminSer.branch">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="branchName" placeholder="Branch Name">
+        </div>
+
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="branchType" placeholder="Branch Type">
+        </div>
+
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="ifscCode" placeholder="ifsc Code">
+        </div>
+
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="micrCode" placeholder="micr Code">
+        </div>
+
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="branchCode" placeholder="Branch Code">
+        </div>
+
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="branchContactNo" placeholder="Branch Contact No">
+        </div>
+  
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="branchMailId" placeholder="Branch Mail Id">
+        </div>
+
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" formControlName="status" placeholder="Branch status">
+        </div>
+      </div>
+    </form>
+
+        <form [formGroup]="this.adminSer.branchAddress">
+          <div class="row">
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" formControlName="houseNo" placeholder="House No">
+              </div>
+
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" formControlName="area" placeholder="Area">
+              </div>
+
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" formControlName="streetName" placeholder="Street Name">
+              </div>
+
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" formControlName="landMark" placeholder="LandMark">
+              </div>
+
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" formControlName="city" placeholder="City">
+              </div>
+
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" formControlName="taluka" placeholder="Taluka">
+              </div>
+        
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" formControlName="district" placeholder="District">
+              </div>
+
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" formControlName="state" placeholder="State">
+              </div>
+
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" formControlName="country" placeholder="Country">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" formControlName="pincode" placeholder="Pincode">
+              </div>
+        </div>
+      <div class="form-group col-md-12">
+        <button type="button" class="btn btn-success btn-lg btn-block"  (click)="submitdata()">Submit</button>
+      </div>
+    </form>
+  </div>

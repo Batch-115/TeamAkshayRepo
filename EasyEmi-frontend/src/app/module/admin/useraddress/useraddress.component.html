@@ -1,0 +1,202 @@
+<div class="container">
+  <!-- {{this.adminser.userAddress.value | json}} -->
+  <form [formGroup]="this.adminser.userAddress">
+    <div class="row">
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "houseNo.invalid && houseNo.touched" class="form-control" formControlName="houseNo" placeholder="House No">
+        <div *ngIf = "houseNo.invalid && houseNo.touched">
+          <small *ngIf = "houseNo.errors?.required" class="text-danger">House No Required</small>
+          </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "streetName.invalid && streetName.touched" class="form-control" formControlName="streetName" placeholder="Street Name">
+        <div *ngIf = "streetName.invalid && streetName.touched">
+          <small *ngIf = "streetName.errors?.required" class="text-danger">Street Name Required</small>
+          </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "area.invalid && area.touched" class="form-control" formControlName="area" placeholder="Area">
+        <div *ngIf = "area.invalid && area.touched">
+          <small *ngIf = "area.errors?.required" class="text-danger">Area Name Required</small>
+          </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "landmark.invalid && landmark.touched" class="form-control" formControlName="landmark" placeholder="Landmark">
+        <div *ngIf = "landmark.invalid && landmark.touched">
+          <small *ngIf = "landmark.errors?.required" class="text-danger">Landmark Required</small>
+          </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "city.invalid && city.touched" class="form-control" formControlName="city" placeholder="City">
+        <div *ngIf = "city.invalid && city.touched">
+          <small *ngIf = "city.errors?.required" class="text-danger">City Required</small>
+          </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "taluka.invalid && taluka.touched" class="form-control" formControlName="taluka" placeholder="Taluka">
+        <div *ngIf = "taluka.invalid && taluka.touched">
+          <small *ngIf = "taluka.errors?.required" class="text-danger">Taluka Name Required</small>
+          </div>
+      </div>
+    
+    <!-- <div class="form-group col-md-4">
+      <label for="dist">Choose District: </label>
+      <select #dist (change)="onDistrictSelect(dist.value)">
+        <option [ngValue]="null" disabled>Select District</option>
+        <option *ngFor="let distrct of districts"  [value]="distrct.districtId">{{distrct.districtName}}</option>
+      </select>
+    </div>   -->
+    <div class="form-group col-md-4">
+      <label for="dist">Choose District: </label>
+    <select (ngModelChange)="onDistrictSelect($event)"  class="custom-select col-md-7" [class.is-invalid] = "isSelectHasError && select.touched" [ngModel]="districts" #select=ngModel [ngModelOptions]="{standalone: true}" >
+      <option *ngFor="let distrct of districts" [ngValue]="distrct">
+          {{distrct.districtName}}
+      </option>
+  </select><br>
+  <small class="text-danger" [class.d-none]="!isSelectHasError || select.untouched">Please Choose a District</small>
+</div>
+
+<div class="form-group col-md-4">
+  <label for="dist">Choose State: </label>
+  <select #dist  >
+    <option [ngValue]="null" >Select State</option>
+    <option>{{distStateCountry.stateName}}</option>
+  </select>
+</div>
+
+<div class="form-group col-md-4">
+  <label for="dist">Choose Country: </label>
+  <select #country  >
+    <option [ngValue]="null" >Select Country</option>
+    <option>{{distStateCountry.countryName}}</option>
+  </select>
+</div>
+ 
+  <div class="form-group col-md-4">
+    <input type="text" [class.is-invalid] = "pincode.invalid && pincode.touched" class="form-control" formControlName="pincode" placeholder="Pincode">
+    <div *ngIf = "pincode.invalid && pincode.touched">
+      <small *ngIf = "pincode.errors?.required" class="text-danger">Pincode Required</small>
+      <small *ngIf = "pincode.errors?.pattern" class="text-danger">Pincode must be of 6 digits</small>
+     </div>
+  </div>
+</div>
+
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" name="addressCheckBox" id="addressCheckBox" (change)="onAddressChecked()">
+      <label class="custom-control-label" for="addressCheckBox">Is Local And Permanent Address Same</label>
+    </div>
+
+    <div class="row" *ngIf=!isSameAddress>
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "perm_houseNo.invalid && perm_houseNo.touched" class="form-control" formControlName="perm_houseNo" placeholder="Permanent House No">
+        <div *ngIf = "perm_houseNo.invalid && perm_houseNo.touched">
+          <small *ngIf = "perm_houseNo.errors?.required" class="text-danger">Permanent House No Required</small>
+          </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "perm_streetName.invalid && perm_streetName.touched" class="form-control" formControlName="perm_streetName" placeholder="Permanent StreetName">
+        <div *ngIf = "perm_streetName.invalid && perm_streetName.touched">
+          <small *ngIf = "perm_streetName.errors?.required" class="text-danger">Permanent Street Name Required</small>
+          </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "perm_area.invalid && perm_area.touched" class="form-control" formControlName="perm_area" placeholder="Permanent Area">
+        <div *ngIf = "perm_area.invalid && perm_area.touched">
+          <small *ngIf = "perm_area.errors?.required" class="text-danger">PermanentArea Name Required</small>
+          </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "perm_landmark.invalid && perm_landmark.touched" class="form-control" formControlName="perm_landmark" placeholder="Permanent Landmark">
+        <div *ngIf = "perm_landmark.invalid && perm_landmark.touched">
+          <small *ngIf = "perm_landmark.errors?.required" class="text-danger">Permanent Landmark Required</small>
+          </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "perm_city.invalid && perm_city.touched" class="form-control" formControlName="perm_city" placeholder="Permanent City">
+        <div *ngIf = "perm_city.invalid && perm_city.touched">
+          <small *ngIf = "perm_city.errors?.required" class="text-danger">Permanent City Required</small>
+          </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "perm_taluka.invalid && perm_taluka.touched" class="form-control" formControlName="perm_taluka" placeholder="Permanent Taluka">
+        <div *ngIf = "perm_taluka.invalid && perm_taluka.touched">
+          <small *ngIf = "perm_taluka.errors?.required" class="text-danger">Permanent Taluka Name Required</small>
+          </div>
+      </div>
+
+      <!-- <div class="form-group col-md-4">
+        <input type="text" class="form-control" formControlName="perm_district" placeholder="Permanent District">
+      </div> -->
+
+      <div class="form-group col-md-4">
+        <label for="permdist">Choose District: </label>
+      <select (ngModelChange)="onPermDistrictSelect($event)" class="custom-select col-md-7" [class.is-invalid] = "isPermSelectHasError && permSelect.touched" [ngModel]="districts" #permSelect=ngModel [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let distrct of districts" [ngValue]="distrct">
+            {{distrct.districtName}}
+        </option>
+    </select><br>
+    <small class="text-danger" [class.d-none]="!isPermSelectHasError || permSelect.untouched">Please Choose a District</small>
+  </div>
+  
+
+  <div class="form-group col-md-4">
+    <label for="dist">Choose Perm_State: </label>
+    <select #dist >
+      <option [ngValue]="null" >Select State</option>
+      <option>{{perm_distStateCountry.stateName}}</option>
+    </select>
+  </div>
+  
+  <div class="form-group col-md-4">
+    <label for="dist">Choose Perm_Country: </label>
+    <select #country >
+      <option [ngValue]="null" >Select Country</option>
+      <option>{{perm_distStateCountry.countryName}}</option>
+    </select>
+  </div>
+
+      <!-- <div class="form-group col-md-4">
+        <label >Choose District: </label>
+        <select formGroupName="perm_district" (change)="onDistrictSelect($event)">
+          <option [ngValue]="null" disabled>Select District</option>
+          <option *ngFor="let district of districts"  [ngValue]="district">{{district.districtName}}</option>
+        </select>
+      </div> -->
+
+      <!-- <div class="form-group col-md-4">
+      <label style="margin-right: 32px;">Permanent State: </label>
+      {{this.adminser.perm_state.get('stateName').value}}
+      </div>
+
+      <div class="form-group col-md-4">
+      <label style="margin-right: 32px;">Permanent Country: </label>
+      {{this.adminser.perm_country.get('countryName').value}}
+    </div> -->
+
+      <div class="form-group col-md-4">
+        <input type="text" [class.is-invalid] = "perm_pincode.invalid && perm_pincode.touched" class="form-control" formControlName="perm_pincode" placeholder="Permanent Code">
+        <div *ngIf = "perm_pincode.invalid && perm_pincode.touched">
+          <small *ngIf = "perm_pincode.errors?.required" class="text-danger">Pincode Required</small>
+          <small *ngIf = "perm_pincode.errors?.pattern" class="text-danger">Pincode must be of 6 digits</small>
+         </div>
+      </div>
+    </div>
+    <div class="form-group col-md-12">
+      <input type="text" class="form-control" formControlName="statusCode" placeholder="User Address Status Code">
+    </div>
+    <div class="form-group">
+      <button type="button" class="btn btn-success btn-lg btn-block" (click)="onUserAddressSubmit()">Submit</button>
+    </div>
+  </form>
+</div>

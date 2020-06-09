@@ -1,0 +1,314 @@
+<div class="container">
+  <div class="jumbotron center">
+    <h4 style="align-self : center;">Users Details</h4>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor='let user of users'> -->
+      <tr *ngFor='let userd of userDto'>
+        <td> {{userd.userId}} </td>
+        <td> {{userd.firstName}} </td>
+        <td> {{userd.lastName}} </td>
+        <td> {{userd.mobileNo}} </td>
+        <td> {{userd.emailId}} </td>
+        <td> {{userd.role}} </td>
+        <td> {{userd.branchName}} </td>
+        <td><a class="btn">
+            <i class="fa fa-edit" (click)="editData(userd)"></i>
+          </a>
+        </td>
+        <td><a class="btn">
+            <i class="fa fa-trash" (click)="deleteData(userd.userId)"></i>
+          </a>
+        </td>
+        <td>
+          <button class="btn"><i class="fa fa-folder" (click)="userDetails(userd.userId)"></i>Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<hr><hr>
+<div *ngIf=showDetails>
+  <h6>User Info</h6>
+  <table border="2">
+    <thead>
+      <tr>
+        <th>userId</th>
+        <th>firstName</th>
+        <th>middleName</th>
+        <th>lastName</th>
+        <th>mobileNo</th>
+        <th>anotherMobileNo</th>
+        <th>emailId</th>
+        <th>gender</th>
+        <th>dateOfBirth</th>
+        <th>dateOfJoining</th>
+        <th>username</th>
+        <th>password</th>
+        <th>role</th>
+        <th>userStatusCode</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{user.userId}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.middleName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.mobileNo}}</td>
+        <td>{{user.anotherMobileNo}}</td>
+        <td>{{user.emailId}}</td>
+        <td>{{user.gender}}</td>
+        <td>{{user.dateOfBirth}}</td>
+        <td>{{user.dateOfJoining}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.password}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.userStatusCode}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<hr>
+<div *ngIf=showDetails>
+  <h6>User Local Address Info</h6>
+  <table border="2">
+    <thead>
+      <tr>
+        <th>addressId</th>
+        <th>houseNo</th>
+        <th>streetName</th>
+        <th>area</th>
+        <th>landmark</th>
+        <th>taluka</th>
+        <th>district</th>
+        <th>state</th>
+        <th>country</th>
+        <th>pincode</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{user.userAddress.addressId}}</td>
+        <td>{{user.userAddress.houseNo}}</td>
+        <td>{{user.userAddress.streetName}}</td>
+        <td>{{user.userAddress.area}}</td>
+        <td>{{user.userAddress.landmark}}</td>
+        <td>{{user.userAddress.taluka}}</td>
+        <td>{{user.userAddress.district}}</td>
+        <td>{{user.userAddress.state}}</td>
+        <td>{{user.userAddress.country}}</td>
+        <td>{{user.userAddress.pincode}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<hr>
+<div *ngIf=showDetails>
+  <h6>User Permanent Address Info</h6>
+  <table border="2">
+    <thead>
+      <tr>
+        <th>houseNo</th>
+        <th>streetName</th>
+        <th>area</th>
+        <th>landmark</th>
+        <th>taluka</th>
+        <th>district</th>
+        <th>state</th>
+        <th>country</th>
+        <th>pincode</th>
+        <th>statusCode</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{user.userAddress.perm_houseNo}}</td>
+        <td>{{user.userAddress.perm_streetName}}</td>
+        <td>{{user.userAddress.perm_area}}</td>
+        <td>{{user.userAddress.perm_landmark}}</td>
+        <td>{{user.userAddress.perm_taluka}}</td>
+        <td>{{user.userAddress.perm_district}}</td>
+        <td>{{user.userAddress.perm_state}}</td>
+        <td>{{user.userAddress.perm_country}}</td>
+        <td>{{user.userAddress.perm_pincode}}</td>
+        <td>{{user.userAddress.statusCode}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<hr>
+<div *ngIf=showDetails>
+  <h6>User Branch Details</h6>
+  <table border="2">
+    <thead>
+      <tr>
+        <th>branchId</th>
+        <th>branchName</th>
+        <th>branchType</th>
+        <th>ifscCode</th>
+        <th>micrCode</th>
+        <th>branchCode</th>
+        <th>branchContactNo</th>
+        <th>branchMailId</th>
+        <th>status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{user.userBranch.branchId}}</td>
+        <td>{{user.userBranch.branchName}}</td>
+        <td>{{user.userBranch.branchType}}</td>
+        <td>{{user.userBranch.ifscCode}}</td>
+        <td>{{user.userBranch.micrCode}}</td>
+        <td>{{user.userBranch.branchCode}}</td>
+        <td>{{user.userBranch.branchContactNo}}</td>
+        <td>{{user.userBranch.branchMailId}}</td>
+        <td>{{user.userBranch.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<hr>
+<div *ngIf=showDetails>
+  <h6>User Branch Address Details</h6>
+  <table border="2">
+    <thead>
+      <tr>
+        <th>addressId</th>
+        <th>houseNo</th>
+        <th>area</th>
+        <th>streetName</th>
+        <th>landMark</th>
+        <th>city</th>
+        <th>taluka</th>
+        <th>district</th>
+        <th>state</th>
+        <th>country</th>
+        <th>pincode</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{user.userBranch.branchAddress.addressId}}</td>
+        <td>{{user.userBranch.branchAddress.houseNo}}</td>
+        <td>{{user.userBranch.branchAddress.area}}</td>
+        <td>{{user.userBranch.branchAddress.streetName}}</td>
+        <td>{{user.userBranch.branchAddress.landMark}}</td>
+        <td>{{user.userBranch.branchAddress.city}}</td>
+        <td>{{user.userBranch.branchAddress.taluka}}</td>
+        <td>{{user.userBranch.branchAddress.district}}</td>
+        <td>{{user.userBranch.branchAddress.state}}</td>
+        <td>{{user.userBranch.branchAddress.country}}</td>
+        <td>{{user.userBranch.branchAddress.pincode}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<hr>
+<div *ngIf=showDetails>
+  <h6>User Document Details</h6>
+  <table border="2">
+    <thead>
+      <tr>
+        <th>docId</th>
+        <th>adharCard</th>
+        <th>panCard</th>
+        <th>passBook</th>
+        <th>userPhoto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{user.userDocument.docId}}</td>
+        <td><img [src]=user.userDocument.adharCard class="img-fluid img-thumbnail"></td>
+        <td><img [src]=user.userDocument.panCard class="img-fluid img-thumbnail"></td>
+        <td><img [src]=user.userDocument.passbook class="img-fluid img-thumbnail"></td>
+        <td><img [src]=user.userDocument.userPhoto class="img-fluid img-thumbnail"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- <div id="table-scroll" class="table-scroll">
+    <div class="table-wrap">
+      <table class="main-table">
+        <thead>
+          <tr>
+            <th scope="col">Header 2</th>
+            <th scope="col">Header 3</th>
+            <th scope="col">Header 4</th>
+            <th scope="col">Header 5</th>
+            <th scope="col">Header 6</th>
+            <th scope="col">Header 7</th>
+            <th scope="col">Header 8</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+          </tr>
+          <tr>
+            <td>Cell content longer</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+          </tr>
+          <tr>
+            <td>Cell content longer</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+          </tr>
+          <tr>
+            <td>Cell content longer</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+          </tr>
+          <tr>
+            <td>Cell content longer</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+          </tr>
+          <tr>
+            <td>Cell content longer</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+            <td>Cell content</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Footer 3</td>
+            <td>Footer 4</td>
+            <td>Footer 5</td>
+            <td>Footer 6</td>
+            <td>Footer 7</td>
+            <td>Footer 8</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div> -->

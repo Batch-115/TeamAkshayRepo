@@ -1,0 +1,31 @@
+<div class="container">
+  <label for="adharCard">Adhar Card :-</label>
+  <label class="btn btn-default">
+    <input type="file" #adharInput name="adharCard" id="adharCard" (change)="selectFile($event,adharInput.name)"  />
+    <img [src]=this.adminSer.adharCard *ngIf=this.adminSer.isAdharDisplay class="img-fluid img-thumbnail">
+  </label>
+  
+  <br>
+
+  <label for="panCard">PanCard :-</label>
+  <label class="btn btn-default">
+    <input type="file" #panInput name="panCard" id="panCard" (change)="selectFile($event,panInput.name)"  />
+    <img [src]=this.adminSer.panCard *ngIf=this.adminSer.isPanCardDisplay class="img-fluid img-thumbnail">
+  </label><br>
+
+  <label for="passbook">Bank PassBook :-</label>
+  <label class="btn btn-default">
+    <input type="file" #passbookInput name="passbook" id="passbook" (change)="selectFile($event,passbookInput.name)"  />
+    <img [src]=this.adminSer.passbook *ngIf=this.adminSer.isPassbookDisplay class="img-fluid img-thumbnail">
+  </label><br>
+
+  <label for="userPhoto">Photo :-</label>
+  <label class="btn btn-default">
+    <input type="file" #photoInput name="userPhoto" id="userPhoto" (change)="selectFile($event,photoInput.name)"  />
+    <img [src]=this.adminSer.userPhoto *ngIf=this.adminSer.isUserPhotoDisplay class="img-fluid img-thumbnail">
+  </label><br>
+
+    <div class="form-group">
+      <button type="button" class="btn btn-success btn-lg btn-block" (click)="onUserDocumentSubmit()">Submit</button>
+    </div>
+</div>

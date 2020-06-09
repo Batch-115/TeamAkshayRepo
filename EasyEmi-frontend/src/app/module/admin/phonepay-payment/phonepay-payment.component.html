@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="center">
+      <h2>Welcome To Phonepay Payment portal</h2>
+    </div>
+  </div>
+</div>
+
+<div class="container" >
+  <form [formGroup]="this.adminSer.phonepayForm" (ngSubmit)="savePhonepay()">
+  
+    <div class="row">
+
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="upi_Id" placeholder="Enter UPI ID">
+      </div>
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="mobileNo" placeholder="Enter Mobile No">
+      </div>
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="amount" placeholder="Enter Amount">
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success btn-lg btn-block" type="submit" >Submit</button>
+    
+    </div>
+     
+    <div class="form-group">
+      <button class="btn btn-info btn-lg btn-block" (onclick)="reset()" >Reset</button>
+    
+    </div>
+  
+  </form>
+</div> 
+<router-outlet></router-outlet>

@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="center">
+      <h2>Welcome To Card Payment Portal</h2>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <form [formGroup]="this.adminSer.cardForm" (ngSubmit)="saveCard()">
+    <div class="row">
+
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="card_Type" placeholder="Enter Card Type">
+      </div>
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="pcardNo" placeholder="Enter card No">
+      </div>
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="name" placeholder="Enter Name on the Card">
+      </div>
+
+
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="card_Validuptil_Month"
+          placeholder="Enter valid Month on Card">
+      </div>
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="card_Validuptil_Year"
+          placeholder="Enter valid Year on Card">
+      </div>
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="cvc" placeholder="Enter CVV code on card">
+      </div>
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="amount" placeholder="Enter Ammount">
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button>
+
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-info btn-lg btn-block" (onclick)="reset()">Reset</button>
+
+    </div>
+
+  </form>
+</div>
+<router-outlet></router-outlet>

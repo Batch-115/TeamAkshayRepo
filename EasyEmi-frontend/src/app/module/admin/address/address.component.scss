@@ -1,0 +1,13 @@
+.center {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .jumbotron {  
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color:complement($color: #00000046);
+  }

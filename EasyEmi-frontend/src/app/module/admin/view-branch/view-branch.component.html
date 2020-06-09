@@ -1,0 +1,40 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor='let branch of branch'>
+        <td>{{branch.branchId}}</td>
+        <td>{{branch.branchName}}</td>
+        <td>{{branch.ifscCode}}</td>          
+        <td>{{branch.branchContactNo}}</td>
+        <td>{{branch.branchMailId}}</td>
+        <td>{{branch.branchAddress.country}}</td>
+        <td>{{branch.branchAddress.state}}</td>
+        <td>{{branch.branchAddress.city}}</td>
+        <td>{{branch.branchAddress.pincode}}</td>
+        <td><a class="btn">
+          <i class="fa fa-edit" (click)="editdata(branch)"></i>
+        </a>
+        </td>
+        <td><a class="btn">
+          <i class="fa fa-trash" (click)="deletedata(branch.branchId)"></i>
+        </a>
+        </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+

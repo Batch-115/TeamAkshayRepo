@@ -5,16 +5,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Entity
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	private String firstName;
 	private String middleName;
-	private String LastName;
+	private String lastName;
 	private long mobileNo;
 	private long anotherMobileNo;
 	private String emailId;
@@ -24,13 +27,22 @@ public class User {
 	private  String username;
 	private String password;
 	private String role;
-	private String userBranch;
 	private int userStatusCode;
 	@OneToOne(cascade = CascadeType.ALL)
 	private UserAddress userAddress;
 	@OneToOne(cascade = CascadeType.ALL)
 	private UserDocument userDocument;
+	@ManyToOne(cascade = {
+			CascadeType.MERGE
+	})
+	private Branch userBranch;
 	
+	public Branch getUserBranch() {
+		return userBranch;
+	}
+	public void setUserBranch(Branch userBranch) {
+		this.userBranch = userBranch;
+	}
 	public int getUserId() {
 		return userId;
 	}
@@ -50,10 +62,10 @@ public class User {
 		this.middleName = middleName;
 	}
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 	public long getMobileNo() {
 		return mobileNo;
@@ -108,12 +120,6 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
-	}
-	public String getUserBranch() {
-		return userBranch;
-	}
-	public void setUserBranch(String userBranch) {
-		this.userBranch = userBranch;
 	}
 	public int getUserStatusCode() {
 		return userStatusCode;

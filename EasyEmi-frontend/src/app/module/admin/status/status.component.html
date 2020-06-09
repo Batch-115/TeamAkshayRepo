@@ -1,0 +1,36 @@
+
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="center">
+      <button type="button" (click)="viewStatus()" style="margin-left : 64px">View Status</button>
+    </div>
+  </div>
+</div>
+
+<div class="container" >
+  <form [formGroup]="this.adminSer.statusForm" (ngSubmit)="saveStatus()"> 
+  
+    <div class="row">
+
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="statusDescription" placeholder="Enter Status Description">
+      </div>
+     
+      <div class="form-group col-md-12">
+        <input type="text" class="form-control" formControlName="statusCode" placeholder="Enter  Status Code">
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success btn-lg btn-block" type="submit" >Submit</button>
+    
+    </div>
+     
+    <div class="form-group">
+      <button class="btn btn-info btn-lg btn-block" (onclick)="reset()" >Reset</button>
+    
+    </div>
+  
+  </form>
+</div> 
+<router-outlet></router-outlet>

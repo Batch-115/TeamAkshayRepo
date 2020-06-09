@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="center">
+      <button type="button" (click)="addStatus()" style="margin-left : 64px">Add Status</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr  class="table-warning">
+        <th>Status ID</th>
+        <th>Description</th>
+        <th> Status Code</th>
+        <th>Delete</th>
+        
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor='let status of status'>
+        
+        <td>{{status.statusId}}</td>
+        <td>{{status.statusDescription}}</td>
+        <td> {{status.statusCode}} </td>
+      
+       
+        
+        <td><a class="btn">
+          <i class="fa fa-trash" (click)="delete(status)"></i>
+        </a>
+        </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>
